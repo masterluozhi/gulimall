@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gulimall-coupon" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/gulimall-member" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/gulimall-order" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/gulimall-product" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/gulimall-ware" vcs="svn" />
+  </component>
+</project>
