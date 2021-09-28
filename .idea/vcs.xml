@@ -2,10 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/gulimall-coupon" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/gulimall-member" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/gulimall-order" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/gulimall-product" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/gulimall-ware" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gulimail-common" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/gulimall-gateway" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/renren-generator" vcs="svn" />
   </component>
 </project>
