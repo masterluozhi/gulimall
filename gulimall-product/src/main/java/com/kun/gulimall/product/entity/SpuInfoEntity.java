@@ -1,11 +1,16 @@
 package com.kun.gulimall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import com.sun.org.apache.xerces.internal.impl.dv.dtd.NOTATIONDatatypeValidator;
 import lombok.Data;
 
 /**
@@ -57,5 +62,7 @@ public class SpuInfoEntity implements Serializable {
 	 * 
 	 */
 	private Date updateTime;
+	@TableField(exist = false)
+	private Long CatelogId;
 
 }

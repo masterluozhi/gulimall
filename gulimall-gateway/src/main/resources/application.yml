@@ -9,6 +9,12 @@ spring:
         server-addr: 127.0.0.1:8848
     gateway:
       routes:
+      - id: member_route
+        uri: lb://gulimail-member
+        predicates:
+           - Path=/api/member/**
+        filters:
+           - RewritePath=/api(?<segment>.*), /$\{segment}
       - id: product_route
         uri: lb://gulimall-product
         predicates:
@@ -20,7 +26,7 @@ spring:
         predicates:
            - Path=/api/thirdparty/**
         filters:
-           - RewritePath=/api/thirdparty(?<segment>.*), /$\{segment}
+           - RewritePath=/api(?<segment>.*), /$\{segment}
       - id: admin_route
         uri: lb://renren-fast
         predicates:

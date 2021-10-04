@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://localhost:3306/gulimall_sms
+    url: jdbc:mysql://localhost:3306/gulimall_ums
     driver-class-name: com.mysql.jdbc.Driver
   application:
     name: gulimail-member
@@ -11,9 +11,11 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
 mybatis-plus:
-  mapper-locations: classpath：mapper/**/*.xml
+  mapper-locations: classpath:mapper/**/*.xml
   global-config:
       db-config:
         id-type: auto
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 server:
   port: 8000

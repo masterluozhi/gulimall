@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 import com.kun.common.utils.PageUtils;
 import com.kun.gulimall.product.entity.AttrEntity;
+import com.kun.gulimall.product.vo.AttrRespVo;
+import com.kun.gulimall.product.vo.AttrVo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,5 +20,15 @@ import java.util.Map;
 public interface AttrService extends IService<AttrEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    void saveAttrVo(AttrVo attr);
+
+    PageUtils queryBaseAttrPage(Map<String,Object> params, long catelogId,String type);
+
+    AttrRespVo getAttrInfo(Long attrId);
+
+    void updateAttrVo(AttrVo attr);
+
+
 }
 

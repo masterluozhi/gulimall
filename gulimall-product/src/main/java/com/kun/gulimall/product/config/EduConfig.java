@@ -8,8 +8,10 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
+@EnableTransactionManagement//开启事务
 @MapperScan("com.kun.gulimall.product.dao")
 public class EduConfig {
     @Bean
@@ -28,7 +30,10 @@ public class EduConfig {
 
     @Bean
     public PaginationInterceptor paginationInterceptor(){
-        return  new PaginationInterceptor();
+        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+        //设置请求页面大于最大页面后，自动跳转第一页
+        paginationInterceptor.setOverflow(true);
+        return  paginationInterceptor;
     }
 
 }

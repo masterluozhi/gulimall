@@ -5,10 +5,13 @@ import com.kun.gulimall.product.entity.AttrEntity;
 import com.kun.gulimall.product.service.AttrService;
 import com.kun.common.utils.PageUtils;
 import com.kun.common.utils.R;
+import com.kun.gulimall.product.vo.AttrRespVo;
+import com.kun.gulimall.product.vo.AttrVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -25,7 +28,13 @@ import java.util.Map;
 public class AttrController {
     @Autowired
     private AttrService attrService;
-
+ @GetMapping("/{attrType}/list/{catelogId}")
+ public R list(@RequestParam Map<String,Object> params,
+               @PathVariable("catelogId") long catelogId,
+               @PathVariable("attrType")String type){
+     PageUtils page =  attrService.queryBaseAttrPage(params,catelogId,type);
+     return R.ok().put("page", page);
+ }
     /**
      * 列表
      */
@@ -44,9 +53,9 @@ public class AttrController {
     @RequestMapping("/info/{attrId}")
 
     public R info(@PathVariable("attrId") Long attrId){
-		AttrEntity attr = attrService.getById(attrId);
+        AttrRespVo attrInfo = attrService.getAttrInfo(attrId);
 
-        return R.ok().put("attr", attr);
+        return R.ok().put("attr",  attrInfo);
     }
 
     /**
@@ -54,8 +63,8 @@ public class AttrController {
      */
     @RequestMapping("/save")
 
-    public R save(@RequestBody AttrEntity attr){
-		attrService.save(attr);
+    public R save(@RequestBody AttrVo attr){
+		attrService.saveAttrVo(attr);
 
         return R.ok();
     }
@@ -65,8 +74,8 @@ public class AttrController {
      */
     @RequestMapping("/update")
 
-    public R update(@RequestBody AttrEntity attr){
-		attrService.updateById(attr);
+    public R update(@RequestBody AttrVo attr){
+		attrService.updateAttrVo(attr);
 
         return R.ok();
     }

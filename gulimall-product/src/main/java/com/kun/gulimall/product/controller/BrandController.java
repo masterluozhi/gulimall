@@ -4,12 +4,16 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.kun.common.utils.PageUtils;
 import com.kun.common.utils.R;
 
 import com.kun.common.valid.SaveValid;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -40,8 +44,8 @@ public class BrandController {
     @RequestMapping("/list")
 
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = brandService.queryPage(params);
 
+        PageUtils page = brandService.queryPage(params);
         return R.ok().put("page", page);
     }
 
@@ -62,7 +66,7 @@ public class BrandController {
      */
     @RequestMapping("/save")
 
-    public R save(@Validated(value = SaveValid.class) @RequestBody BrandEntity brand, BindingResult result){
+    public R save(@Validated(value = SaveValid.class) @RequestBody BrandEntity brand){
 
 		brandService.save(brand);
         return R.ok();
@@ -71,7 +75,12 @@ public class BrandController {
     /**
      * 修改
      */
-
+    @RequestMapping("/update")
+    //@RequiresPermissions("product:brand:update")
+    public R update(@RequestBody(required = false) BrandEntity brand){
+        brandService.updateDatail(brand);//事务以免关系表不同步
+        return R.ok();
+    }
     @RequestMapping("/update/status")
     //@RequiresPermissions("product:brand:update")
     public R updateStatus(@RequestBody(required = false) BrandEntity brand){

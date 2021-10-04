@@ -4,6 +4,7 @@ import com.kun.gulimall.product.entity.CategoryEntity;
 import com.kun.gulimall.product.service.CategoryService;
 
 import com.kun.common.utils.R;
+import com.kun.gulimall.product.service.PmsCategoryBrandRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,7 +69,7 @@ public class CategoryController {
 
     public R update(@RequestBody(required = false) CategoryEntity category){
 
-		categoryService.updateById(category);
+		categoryService.updateCategory(category);
 
         return R.ok();
     }
